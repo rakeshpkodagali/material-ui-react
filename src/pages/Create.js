@@ -1,9 +1,11 @@
 import React from "react";
+import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 
 const Create = () => {
   return (
-    <div>
+    <Container maxWidth="xl">
       <Typography
         variant="h6"
         component="h2"
@@ -11,7 +13,10 @@ const Create = () => {
         gutterBottom
         children="Create a New Note."
       />
-    </div>
+      <Button color="secondary" variant="contained" type="submit">
+        Submit
+      </Button>
+    </Container>
   );
 };
 
