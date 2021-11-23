@@ -2,6 +2,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
+import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
 
 const Create = () => {
   return (
@@ -13,7 +14,12 @@ const Create = () => {
         gutterBottom
         children="Create a New Note."
       />
-      <Button color="secondary" variant="contained" type="submit">
+      <Button
+        color="secondary"
+        variant="contained"
+        type="submit"
+        endIcon={<KeyboardArrowRightIcon />}
+      >
         Submit
       </Button>
     </Container>
