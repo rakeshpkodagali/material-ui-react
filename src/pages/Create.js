@@ -3,12 +3,20 @@ import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import KeyboardArrowRightIcon from "@material-ui/icons/KeyboardArrowRight";
-import { TextField } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core";
+import {
+  makeStyles,
+  TextField,
+  Radio,
+  RadioGroup,
+  FormControlLabel,
+  FormLabel,
+  FormControl,
+} from "@material-ui/core";
 
 const useStyles = makeStyles({
   field: {
     margin: "20px 0",
+    display: "block",
   },
 });
 
@@ -17,17 +25,19 @@ const Create = () => {
   const [details, setDetails] = useState("");
   const [titleError, setTitleError] = useState(false);
   const [detailsError, setDetailsError] = useState(false);
+  const [category, setCategory] = useState("todos");
   const classes = useStyles();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     setTitleError(false);
     setDetailsError(false);
 
     if (!title) setTitleError(true);
     if (!details) setDetailsError(true);
 
-    if (title && details) console.log(title, details);
+    if (title && details) console.log(title, details, category);
   };
 
   return (
@@ -64,6 +74,23 @@ const Create = () => {
           error={detailsError}
           onChange={(e) => setDetails(e.target.value)}
         />
+        <FormControl className={classes.field}>
+          <FormLabel color="secondary">Note Category</FormLabel>
+          <RadioGroup
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+            row
+          >
+            <FormControlLabel control={<Radio />} label="Money" value="money" />
+            <FormControlLabel control={<Radio />} label="Todos" value="todos" />
+            <FormControlLabel
+              control={<Radio />}
+              label="Reminders"
+              value="reminders"
+            />
+            <FormControlLabel control={<Radio />} label="Work" value="work" />
+          </RadioGroup>
+        </FormControl>
         <Button
           color="secondary"
           variant="contained"
